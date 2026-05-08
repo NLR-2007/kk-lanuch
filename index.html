@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#06240f" />
+  <title>Kisaan Krushi — Premium Logo Launch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Telugu:wght@400;600;700&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #041107;
+      --bg-2: #082512;
+      --gold: #f7c65b;
+      --gold-2: #ff9f1c;
+      --green: #62c36f;
+      --green-2: #0e8a45;
+      --cream: #fff7db;
+      --muted: rgba(255,255,255,.68);
+      --glass: rgba(255,255,255,.085);
+      --glass-border: rgba(255,255,255,.18);
+      --shadow-gold: 0 0 42px rgba(247,198,91,.45);
+      --shadow-green: 0 0 42px rgba(98,195,111,.45);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      min-height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(68,168,78,.22), transparent 32%),
+        radial-gradient(circle at 12% 12%, rgba(247,198,91,.15), transparent 28%),
+        linear-gradient(140deg, #020704 0%, var(--bg) 42%, #031c0b 100%);
+      user-select: none;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.024) 1px, transparent 1px);
+      background-size: 58px 58px;
+      mask-image: radial-gradient(circle at center, black 0 58%, transparent 82%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .aurora {
+      position: fixed;
+      inset: -30%;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        conic-gradient(from 0deg at 50% 50%, transparent, rgba(98,195,111,.13), transparent, rgba(247,198,91,.12), transparent);
+      animation: aurora 18s linear infinite;
+      filter: blur(48px);
+      opacity: .72;
+    }
+    @keyframes aurora { to { transform: rotate(360deg); } }
+
+    #stars, #canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+    }
+    #stars { z-index: 1; }
+    #canvas { z-index: 20; }
+
+    .star {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(255,255,255,.8);
+      animation: twinkle 3s ease-in-out infinite alternate;
+    }
+    @keyframes twinkle { from { opacity: .1; transform: scale(.75); } to { opacity: .95; transform: scale(1.35); } }
+
+    .screen {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      z-index: 5;
+      padding: clamp(18px, 4vw, 54px);
+    }
+
+    #pre-launch {
+      background:
+        radial-gradient(circle at center, rgba(19,80,31,.58) 0%, rgba(4,17,7,.92) 62%, rgba(1,7,3,.98) 100%);
+      transition: opacity .9s ease, transform .9s ease;
+    }
+
+    .stage-card {
+      position: relative;
+      width: min(1080px, 94vw);
+      min-height: min(700px, 88vh);
+      border: 1px solid var(--glass-border);
+      border-radius: 36px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.045)),
+        radial-gradient(circle at 50% 0%, rgba(247,198,91,.18), transparent 40%),
+        rgba(0,0,0,.18);
+      box-shadow: 0 30px 120px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.18);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: clamp(28px, 5vw, 72px);
+      backdrop-filter: blur(18px);
+    }
+
+    .stage-card::before,
+    .stage-card::after {
+      content: '';
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .stage-card::before {
+      top: -210px;
+      left: -180px;
+      background: radial-gradient(circle, rgba(247,198,91,.2), transparent 62%);
+    }
+    .stage-card::after {
+      right: -220px;
+      bottom: -220px;
+      background: radial-gradient(circle, rgba(98,195,111,.22), transparent 62%);
+    }
+
+    .ribbon {
+      position: absolute;
+      top: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(680px, 82%);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(247,198,91,.85), transparent);
+    }
+    .ribbon::before, .ribbon::after {
+      content: '◆';
+      position: absolute;
+      top: -10px;
+      color: var(--gold);
+      font-size: 15px;
+      text-shadow: var(--shadow-gold);
+    }
+    .ribbon::before { left: 22%; }
+    .ribbon::after { right: 22%; }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: clamp(.68rem, 1.8vw, .92rem);
+      font-weight: 700;
+      letter-spacing: .38em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.8rem, 9vw, 6.8rem);
+      font-weight: 800;
+      line-height: .92;
+      letter-spacing: .08em;
+      text-shadow: 0 12px 42px rgba(0,0,0,.55);
+    }
+    .title span {
+      display: block;
+      color: var(--green);
+      text-shadow: 0 0 32px rgba(98,195,111,.45);
+    }
+
+    .tagline {
+      margin-top: 18px;
+      color: var(--cream);
+      font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif;
+      font-size: clamp(.92rem, 2.1vw, 1.25rem);
+      letter-spacing: .07em;
+      opacity: .9;
+    }
+
+    .guest-panel {
+      margin-top: 30px;
+      padding: 18px 26px;
+      border-radius: 24px;
+      border: 1px solid rgba(247,198,91,.35);
+      background: linear-gradient(135deg, rgba(247,198,91,.14), rgba(98,195,111,.08));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 18px 60px rgba(0,0,0,.22);
+    }
+    .guest-kicker {
+      color: rgba(255,255,255,.58);
+      font-size: clamp(.62rem, 1.6vw, .8rem);
+      text-transform: uppercase;
+      letter-spacing: .28em;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .guest-name {
+      font-size: clamp(1.05rem, 3vw, 1.7rem);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: .03em;
+    }
+    .guest-title {
+      margin-top: 3px;
+      color: var(--gold);
+      font-size: clamp(.78rem, 1.8vw, .98rem);
+      font-weight: 600;
+    }
+
+    .btn-wrap {
+      position: relative;
+      margin-top: 48px;
+      width: 174px;
+      height: 174px;
+      display: grid;
+      place-items: center;
+    }
+    .ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 2px solid rgba(247,198,91,.36);
+      animation: ring-pulse 2.4s ease-out infinite;
+    }
+    .ring:nth-child(2) { animation-delay: .8s; }
+    .ring:nth-child(3) { animation-delay: 1.6s; }
+    @keyframes ring-pulse { from { transform: scale(.65); opacity: .95; } to { transform: scale(1.86); opacity: 0; } }
+
+    #launch-btn {
+      position: relative;
+      z-index: 2;
+      width: 148px;
+      height: 148px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.28);
+      color: #2b1800;
+      background:
+        radial-gradient(circle at 35% 25%, #fff6ba, transparent 24%),
+        linear-gradient(135deg, #ffd978 0%, #f6ad25 44%, #c86e00 100%);
+      font-family: 'Poppins', sans-serif;
+      font-size: .98rem;
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 0 48px rgba(247,198,91,.52), 0 0 120px rgba(247,198,91,.18), inset 0 2px 8px rgba(255,255,255,.6);
+      transition: transform .18s ease, box-shadow .28s ease;
+    }
+    #launch-btn:hover, #launch-btn:focus-visible {
+      transform: scale(1.06);
+      outline: none;
+      box-shadow: 0 0 68px rgba(247,198,91,.85), 0 0 145px rgba(247,198,91,.28), inset 0 2px 8px rgba(255,255,255,.7);
+    }
+    #launch-btn:active { transform: scale(.94); }
+    #launch-btn.fired { pointer-events: none; animation: btn-exit .5s ease forwards; }
+    @keyframes btn-exit { to { transform: scale(0); opacity: 0; } }
+
+    .hint {
+      margin-top: 18px;
+      color: rgba(255,255,255,.48);
+      font-size: .78rem;
+      letter-spacing: .12em;
+    }
+
+    #reveal {
+      z-index: 9;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .8s ease .35s;
+    }
+    #reveal.visible { opacity: 1; pointer-events: auto; }
+
+    .reveal-card {
+      position: relative;
+      width: min(980px, 94vw);
+      min-height: min(720px, 90vh);
+      border-radius: 40px;
+      border: 1px solid rgba(247,198,91,.28);
+      background:
+        radial-gradient(circle at 50% 18%, rgba(247,198,91,.2), transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.04));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: clamp(28px, 5vw, 76px);
+      box-shadow: 0 30px 130px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.18);
+      backdrop-filter: blur(18px);
+      overflow: hidden;
+    }
+
+    .launched-by {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .8s ease, transform .8s ease;
+      margin-bottom: 26px;
+    }
+    .launched-by.show { opacity: 1; transform: translateY(0); }
+    .launched-by .small {
+      color: rgba(255,255,255,.58);
+      font-size: clamp(.65rem, 1.7vw, .85rem);
+      font-weight: 800;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+    }
+    .launched-by .name {
+      margin-top: 8px;
+      color: var(--gold);
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.25rem, 3.4vw, 2.2rem);
+      font-weight: 800;
+      text-shadow: var(--shadow-gold);
+    }
+    .launched-by .role {
+      margin-top: 4px;
+      color: rgba(255,255,255,.74);
+      font-size: clamp(.78rem, 1.9vw, 1rem);
+      font-weight: 500;
+    }
+
+    #logo-wrap {
+      transform: translateY(-120vh) scale(.86);
+      transition: transform 1s cubic-bezier(.18,.89,.26,1.36);
+      text-align: center;
+      position: relative;
+    }
+    #logo-wrap.dropped { transform: translateY(0) scale(1); }
+    #logo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -22px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, var(--gold), var(--green), var(--gold));
+      filter: blur(20px);
+      opacity: .45;
+      animation: spin 8s linear infinite;
+      z-index: -1;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .logo-frame {
+      width: clamp(160px, 30vw, 278px);
+      height: clamp(160px, 30vw, 278px);
+      border-radius: 50%;
+      padding: 12px;
+      background: linear-gradient(135deg, rgba(247,198,91,.95), rgba(255,255,255,.7), rgba(98,195,111,.9));
+      box-shadow: 0 24px 80px rgba(0,0,0,.35), var(--shadow-green), var(--shadow-gold);
+    }
+    .logo-img, #logo-placeholder {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #fff;
+      border: 5px solid rgba(4,17,7,.92);
+    }
+    #logo-placeholder {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(4rem, 8vw, 6rem);
+      background: linear-gradient(135deg, #0f6f37, #78d67e);
+    }
+
+    .r-name {
+      color: #fff;
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.05rem, 6.8vw, 5rem);
+      font-weight: 800;
+      letter-spacing: .11em;
+      text-align: center;
+      margin-top: 28px;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .9s ease, transform .9s ease;
+      text-shadow: 0 16px 42px rgba(0,0,0,.45);
+    }
+    .r-name span { color: var(--green); }
+    .show { opacity: 1 !important; transform: translateY(0) !important; }
+
+    .r-sub, .r-hindi, .r-telugu, .r-powered {
+      opacity: 0;
+      transition: opacity .9s ease, transform .9s ease;
+      transform: translateY(14px);
+    }
+    .r-sub {
+      color: var(--cream);
+      font-size: clamp(.82rem, 2.15vw, 1.08rem);
+      font-weight: 400;
+      letter-spacing: .18em;
+      margin-top: 12px;
+    }
+    .r-hindi {
+      color: var(--gold);
+      font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif;
+      font-size: clamp(.9rem, 2.4vw, 1.22rem);
+      font-weight: 700;
+      margin-top: 10px;
+    }
+    .r-telugu {
+      color: rgba(255,255,255,.76);
+      font-family: 'Noto Sans Telugu', 'Poppins', sans-serif;
+      font-size: clamp(.88rem, 2.2vw, 1.15rem);
+      font-weight: 600;
+      margin-top: 8px;
+    }
+    .r-powered {
+      margin-top: 34px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.16);
+      color: rgba(255,255,255,.58);
+      font-size: clamp(.62rem, 1.6vw, .78rem);
+      letter-spacing: .19em;
+      background: rgba(255,255,255,.055);
+    }
+
+    .skip-btn {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 30;
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(0,0,0,.28);
+      color: rgba(255,255,255,.68);
+      padding: 9px 13px;
+      border-radius: 999px;
+      font: 600 .75rem 'Poppins', sans-serif;
+      letter-spacing: .08em;
+      cursor: pointer;
+      backdrop-filter: blur(12px);
+    }
+    .skip-btn:hover { color: #fff; border-color: rgba(247,198,91,.5); }
+
+    @media (max-height: 690px) {
+      .stage-card, .reveal-card { min-height: 94vh; padding-top: 28px; padding-bottom: 28px; }
+      .btn-wrap { margin-top: 28px; transform: scale(.82); }
+      .guest-panel { margin-top: 18px; }
+      .r-powered { margin-top: 18px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="aurora" aria-hidden="true"></div>
+  <div id="stars" aria-hidden="true"></div>
+  <canvas id="canvas" aria-hidden="true"></canvas>
+
+  <main id="pre-launch" class="screen" aria-label="Kisaan Krushi official logo launch pre-launch screen">
+    <section class="stage-card">
+      <div class="ribbon" aria-hidden="true"></div>
+      <div class="eyebrow">Official Logo Launch · 2026</div>
+      <h1 class="title">KISAAN<span>KRUSHI</span></h1>
+      <p class="tagline">किसान की मदद, हर मौसम में</p>
+
+      <div class="guest-panel" aria-label="Chief guest launch details">
+        <div class="guest-kicker">To be launched by</div>
+        <div class="guest-name">Hon’ble Sri T. Harish Rao Garu</div>
+        <div class="guest-title">MLA, Siddipet · Telangana</div>
+      </div>
+
+      <div class="btn-wrap">
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <button id="launch-btn" type="button" aria-label="Launch Kisaan Krushi logo">Launch</button>
+      </div>
+      <div class="hint">Press Launch to begin the premium reveal ceremony</div>
+    </section>
+  </main>
+
+  <section id="reveal" class="screen" aria-label="Kisaan Krushi official logo reveal screen">
+    <div class="reveal-card">
+      <div class="launched-by" id="launched-by">
+        <div class="small">Officially Launched By</div>
+        <div class="name">Hon’ble Sri T. Harish Rao Garu</div>
+        <div class="role">MLA, Siddipet · Telangana</div>
+      </div>
+
+      <div id="logo-wrap">
+        <div class="logo-frame">
+          <img
+            src="assets/app_logo.jpg"
+            alt="Kisaan Krushi Logo"
+            class="logo-img"
+            onerror="this.style.display='none';document.getElementById('logo-placeholder').style.display='flex';"
+          />
+          <div id="logo-placeholder" aria-hidden="true">🌱</div>
+        </div>
+      </div>
+
+      <h2 class="r-name" id="r-name">KISAAN <span>KRUSHI</span></h2>
+      <div class="r-sub" id="r-sub">Farmer’s Companion · Every Season</div>
+      <div class="r-hindi" id="r-hindi">किसान की मदद, हर मौसम में 🌾</div>
+      <div class="r-telugu" id="r-telugu">రైతుకు తోడు · ప్రతి కాలంలో</div>
+      <div class="r-powered" id="r-powered">POWERED BY TECHNOLOGY · BUILT FOR BHARAT</div>
+    </div>
+  </section>
+
+  <button class="skip-btn" type="button" id="replay-btn" aria-label="Replay launch animation">Replay</button>
+<!-- Audio -->
+<audio id="boomSound" src="assets/lanuch-boom.mp3"></audio>
+<audio id="fireworksSound" src="assets/fire-works.mp3"></audio>
+<audio id="crowdSound" src="assets/crowd-cheer.mp3"></audio>
+<audio id="swooshSound" src="assets/reveal-swoosh.mp3"></audio>
+<audio id="bgMusic" src="assets/bg-music.mp3" loop></audio>
+  <script>
+    const CONFIG = {
+      starCount: Math.min(170, Math.floor(window.innerWidth / 8)),
+      colors: ['#66BB6A', '#81C784', '#A5D6A7', '#F7C65B', '#FFD978', '#FFF7DB', '#FFFFFF', '#4CAF50', '#FF9F1C'],
+      fireworkDurationBursts: 20,
+      confettiDurationMs: 6200
+    };
+
+    const starsEl = document.getElementById('stars');
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d', { alpha: true });
+    const launchBtn = document.getElementById('launch-btn');
+    const replayBtn = document.getElementById('replay-btn');
+
+    let sparks = [];
+    let confetti = [];
+    let fwTimer = null;
+    let cfTimer = null;
+    let isLaunched = false;
+    let loopStarted = false;
+
+    function createStars() {
+      starsEl.innerHTML = '';
+      for (let i = 0; i < CONFIG.starCount; i++) {
+        const star = document.createElement('div');
+        const size = Math.random() * 2.4 + 0.45;
+        star.className = 'star';
+        star.style.cssText = `width:${size}px;height:${size}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-delay:${Math.random()*3.6}s;animation-duration:${2+Math.random()*3.8}s;`;
+        starsEl.appendChild(star);
+      }
+    }
+
+    function resize() {
+      const ratio = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.floor(window.innerWidth * ratio);
+      canvas.height = Math.floor(window.innerHeight * ratio);
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    }
+
+    class Spark {
+      constructor(x, y, power = 1) {
+        this.x = x; this.y = y;
+        this.color = CONFIG.colors[Math.random() * CONFIG.colors.length | 0];
+        const angle = Math.random() * Math.PI * 2;
+        const velocity = (Math.random() * 9.5 + 2.2) * power;
+        this.vx = Math.cos(angle) * velocity;
+        this.vy = Math.sin(angle) * velocity;
+        this.radius = Math.random() * 3.2 + 1;
+        this.alpha = 1;
+        this.decay = Math.random() * 0.016 + 0.011;
+        this.gravity = 0.13;
+      }
+      step() {
+        this.vx *= 0.978;
+        this.vy *= 0.978;
+        this.vy += this.gravity;
+        this.x += this.vx;
+        this.y += this.vy;
+        this.alpha -= this.decay;
+      }
+      draw() {
+        ctx.globalAlpha = Math.max(this.alpha, 0);
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    class Confetti {
+      constructor(init = false) { this.reset(init); }
+      reset(init) {
+        this.x = Math.random() * window.innerWidth;
+        this.y = init ? Math.random() * -window.innerHeight : -24;
+        this.width = Math.random() * 12 + 4;
+        this.height = Math.random() * 7 + 2;
+        this.color = CONFIG.colors[Math.random() * CONFIG.colors.length | 0];
+        this.vx = (Math.random() - 0.5) * 3.4;
+        this.vy = Math.random() * 4.2 + 2.1;
+        this.angle = Math.random() * Math.PI * 2;
+        this.spin = (Math.random() - 0.5) * 0.16;
+        this.alpha = 1;
+      }
+      step() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.angle += this.spin;
+        if (this.y > window.innerHeight + 24) this.alpha -= 0.055;
+      }
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = Math.max(this.alpha, 0);
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle);
+        ctx.fillStyle = this.color;
+        ctx.fillRect(-this.width / 2, -this.height / 2, this.width, this.height);
+        ctx.restore();
+      }
+    }
+
+    function burst(x, y, count = 90, power = 1) {
+      for (let i = 0; i < count; i++) sparks.push(new Spark(x, y, power));
+    }
+
+    function startConfetti() {
+      if (cfTimer) clearInterval(cfTimer);
+      cfTimer = setInterval(() => {
+        for (let i = 0; i < 10; i++) confetti.push(new Confetti());
+      }, 54);
+      setTimeout(() => { clearInterval(cfTimer); cfTimer = null; }, CONFIG.confettiDurationMs);
+    }
+
+    function renderLoop() {
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+      sparks = sparks.filter(item => item.alpha > 0);
+      confetti = confetti.filter(item => item.alpha > 0);
+      sparks.forEach(item => { item.step(); item.draw(); });
+      confetti.forEach(item => { item.step(); item.draw(); });
+      ctx.globalAlpha = 1;
+      requestAnimationFrame(renderLoop);
+    }
+
+    function show(id, delay) {
+      setTimeout(() => document.getElementById(id).classList.add('show'), delay);
+    }
+
+    function launch() {
+      if (isLaunched) return;
+      isLaunched = true;
+      launchBtn.classList.add('fired');
+      if (!loopStarted) { loopStarted = true; renderLoop(); }
+
+      // --- Audio ---
+      const bgMusic = document.getElementById('bgMusic');
+      bgMusic.volume = 0.3;
+      bgMusic.play().catch(() => {});
+
+      const boom = document.getElementById('boomSound');
+      boom.volume = 1;
+      boom.play().catch(() => {});
+
+      setTimeout(() => {
+        const fireworks = document.getElementById('fireworksSound');
+        fireworks.volume = 0.8;
+        fireworks.play().catch(() => {});
+      }, 300);
+
+      setTimeout(() => {
+        const crowd = document.getElementById('crowdSound');
+        crowd.volume = 0.7;
+        crowd.play().catch(() => {});
+      }, 1200);
+
+      setTimeout(() => {
+        const swoosh = document.getElementById('swooshSound');
+        swoosh.volume = 0.9;
+        swoosh.play().catch(() => {});
+      }, 1400);
+
+      // --- Fireworks & Confetti ---
+      burst(window.innerWidth / 2, window.innerHeight / 2, 150, 1.08);
+
+      let count = 0;
+      fwTimer = setInterval(() => {
+        burst(Math.random() * window.innerWidth, Math.random() * window.innerHeight * 0.72, 82, 1);
+        burst(Math.random() * window.innerWidth, Math.random() * window.innerHeight * 0.72, 82, 1);
+        if (++count >= CONFIG.fireworkDurationBursts) {
+          clearInterval(fwTimer);
+          fwTimer = null;
+        }
+      }, 155);
+
+      setTimeout(startConfetti, 230);
+
+      // --- Screen Transitions ---
+      const pre = document.getElementById('pre-launch');
+      setTimeout(() => {
+        pre.style.opacity = '0';
+        pre.style.transform = 'scale(1.015)';
+        setTimeout(() => { pre.style.display = 'none'; }, 920);
+      }, 520);
+
+      setTimeout(() => {
+        document.getElementById('reveal').classList.add('visible');
+        document.getElementById('logo-wrap').classList.add('dropped');
+      }, 780);
+
+      // --- Staggered Reveals ---
+      show('launched-by', 1180);
+      show('r-name', 1500);
+      show('r-sub', 2020);
+      show('r-hindi', 2460);
+      show('r-telugu', 2860);
+      show('r-powered', 3380);
+
+      setTimeout(() => burst(window.innerWidth / 2, window.innerHeight / 2, 90, .86), 1580);
+      setTimeout(() => burst(window.innerWidth / 2, window.innerHeight * .36, 70, .78), 3100);
+    }
+    function replay() {
+      location.reload();
+    }
+
+    createStars();
+    resize();
+    window.addEventListener('resize', () => { resize(); createStars(); });
+    launchBtn.addEventListener('click', launch);
+    replayBtn.addEventListener('click', replay);
+    window.addEventListener('keydown', event => {
+      if ((event.key === 'Enter' || event.key === ' ') && !isLaunched) launch();
+      if (event.key.toLowerCase() === 'r') replay();
+    });
+  </script>
+</body>
+</html>
